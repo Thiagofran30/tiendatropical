@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda Tropical</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="pagina.css" />
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+      <h1 class="logo">Tienda Tropical</h1>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button id="btn-carrito" aria-label="Abrir carrito">
+        <i class="fas fa-shopping-cart"></i> <span id="cantidad-carrito">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section id="inicio">
+      <h2>Bienvenido a Tienda Tropical</h2>
+      <p class="lead">Ropa y accesorios frescos y coloridos para disfrutar todo el año. Desplazate a "Productos" para ver todo o a "Ofertas" para encontrar descuentos.</p>
+
+      <div class="destacados">
+        <article class="producto destacado" data-nombre="Camisa Estrella" data-precio="1700">
+          <img src="/imagenes/images (1).jfif" alt="Camisa Estrella" />
+          <h3>Camisa Estrella</h3>
+          <p class="precio">$1700</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+      </div>
+    </section>
+    <section id="productos">
+      <h2>Productos</h2>
+      <div class="productos">
+        <article class="producto" data-nombre="Camisa Tropical" data-precio="1500">
+          <img src="/imagenes/camisatropical.jfif" alt="Camisa Tropical" />
+          <h3>Camisa Tropical</h3>
+          <p class="precio">$1500</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-nombre="Short Playero" data-precio="1200">
+          <img src="/imagenes/short playero.webp" alt="Short Playero" />
+          <h3>Short Playero</h3>
+          <p class="precio">$1200</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-nombre="Sombrero Panamá" data-precio="900">
+          <img src="/imagenes/Sombrero parana.jpg" alt="Sombrero Panamá" />
+          <h3>Sombrero Panamá</h3>
+          <p class="precio">$900</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-nombre="Gafas de Sol Tropic" data-precio="800">
+          <img src="/imagenes/Flow br.jfif" alt="Gafas de Sol" />
+          <h3>Gafas de Sol Tropic</h3>
+          <p class="precio">$800</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-nombre="Sandalias Beach" data-precio="1100">
+          <img src="/imagenes/sandaliasbr.jfif" alt="Sandalias Beach" />
+          <h3>Sandalias Beach</h3>
+          <p class="precio">$1100</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-nombre="Bolso Playero" data-precio="2000">
+          <img src="/imagenes/tralalelo.jfif" alt="Bolso Playero" />
+          <h3>Bolso Playero</h3>
+          <p class="precio">$2000</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+      </div>
+    </section>
+    <section id="ofertas">
+      <h2>Ofertas</h2>
+      <p class="lead">Promociones y descuentos por tiempo limitado.</p>
+
+      <div class="productos">
+        <article class="producto oferta" data-nombre="Camisa Tropical (Oferta)" data-precio="1100">
+          <span class="badge">-30%</span>
+          <img src="/imagenes/camisatropical.jfif" alt="Camisa Oferta" />
+          <h3>Camisa Tropical</h3>
+          <p class="precio-original">$1600</p>
+          <p class="precio">$1100</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto oferta" data-nombre="Short Playero (2x1)" data-precio="1200">
+          <span class="badge">2x1</span>
+          <img src="/imagenes/short playero.webp" alt="Short 2x1" />
+          <h3>Short Playero</h3>
+          <p class="precio-original">$2400</p>
+          <p class="precio">$1200</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto oferta" data-nombre="Gafas de Sol (Promo)" data-precio="600">
+          <span class="badge">-25%</span>
+          <img src="imagenes/Flow br.jfif" alt="Gafas Oferta" />
+          <h3>Gafas de Sol Tropic</h3>
+          <p class="precio-original">$800</p>
+          <p class="precio">$600</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+
+        <article class="producto oferta" data-nombre="Sombrero (Oferta)" data-precio="700">
+          <span class="badge">-22%</span>
+          <img src="/imagenes/Sombrero parana.jpg" alt="Sombrero Oferta" />
+          <h3>Sombrero Panamá</h3>
+          <p class="precio-original">$900</p>
+          <p class="precio">$700</p>
+          <button class="btn-comprar">Comprar</button>
+        </article>
+      </div>
+    </section>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p class="lead">Escríbenos a <a href="mailto:tropical@tienda.com">tropical@tienda.com</a> o llamanos al +54 9 11 1234-5678.</p>
+      <p style="text-align:center; margin-top:10px">Seguinos en nuestras redes para ver novedades y más ofertas.</p>
+    </section>
+  </main>
+  <aside id="carrito" class="carrito-oculto" aria-label="Carrito de compras">
+    <h3>Carrito de Compras</h3>
+    <button id="cerrar-carrito" aria-label="Cerrar carrito">✖</button>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span></p>
+    <button id="vaciar-carrito">Vaciar Carrito</button>
+  </aside>
+  <footer>
+    <div class="contenedor footer-container">
+      <p>© 2025 Tienda Tropical. Todos los derechos reservados.</p>
+      <div class="redes">
+        <a href="#" aria-label="Instagram" class="icono-social"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook" class="icono-social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="WhatsApp" class="icono-social"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const botonesComprar = document.querySelectorAll('.btn-comprar');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalSpan = document.getElementById('total');
+    const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+    const carritoAside = document.getElementById('carrito');
+    const btnCarrito = document.getElementById('btn-carrito');
+    const cerrarCarritoBtn = document.getElementById('cerrar-carrito');
+    const cantidadCarritoSpan = document.getElementById('cantidad-carrito');
+
+    let carrito = [];
+
+    function actualizarCarrito() {
+      listaCarrito.innerHTML = '';
+      let total = 0;
+      let cantidadTotal = 0;
+
+      carrito.forEach(producto => {
+        const li = document.createElement('li');
+        li.textContent = `${producto.nombre} - $${producto.precio} x ${producto.cantidad}`;
+        listaCarrito.appendChild(li);
+        total += producto.precio * producto.cantidad;
+        cantidadTotal += producto.cantidad;
+      });
+
+      if (carrito.length === 0) {
+        listaCarrito.innerHTML = '<li>El carrito está vacío</li>';
+        totalSpan.textContent = '0';
+        cantidadCarritoSpan.textContent = '0';
+      } else {
+        totalSpan.textContent = total;
+        cantidadCarritoSpan.textContent = cantidadTotal;
+      }
+    }
+
+    botonesComprar.forEach(boton => {
+      boton.addEventListener('click', e => {
+        const productoElem = e.target.closest('.producto');
+        const nombre = productoElem.getAttribute('data-nombre');
+        const precio = parseInt(productoElem.getAttribute('data-precio'));
+
+        const productoExistente = carrito.find(p => p.nombre === nombre);
+        if (productoExistente) {
+          productoExistente.cantidad++;
+        } else {
+          carrito.push({ nombre, precio, cantidad: 1 });
+        }
+        actualizarCarrito();
+      });
+    });
+    vaciarCarritoBtn.addEventListener('click', () => {
+      carrito = [];
+      actualizarCarrito();
+    });
+    btnCarrito.addEventListener('click', () => {
+      carritoAside.classList.remove('carrito-oculto');
+    });
+    cerrarCarritoBtn.addEventListener('click', () => {
+      carritoAside.classList.add('carrito-oculto');
+    });
+    actualizarCarrito();
+  </script>
+</body>
+</html>
