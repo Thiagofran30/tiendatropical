@@ -209,6 +209,7 @@ button.btn-comprar:hover {
   display: flex;
   flex-direction: column;
   z-index: 15000;
+   display: none;
 }
 
 .carrito-oculto { display: none; }
@@ -311,3 +312,4 @@ footer {
   .producto img { height: 140px; }
   #carrito { width: 92vw; right: 8px; top: 60px; }
 }
+
