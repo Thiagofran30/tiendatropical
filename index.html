@@ -30,7 +30,7 @@
 
       <div class="destacados">
         <article class="producto destacado" data-nombre="Camisa Estrella" data-precio="1700">
-          <img src="imagenes/images (1).jfif" alt="Camisa Estrella" />
+          <img src="/imagenes/images (1).jfif" alt="Camisa Estrella" />
           <h3>Camisa Estrella</h3>
           <p class="precio">$1700</p>
           <button class="btn-comprar">Comprar</button>
@@ -41,14 +41,14 @@
       <h2>Productos</h2>
       <div class="productos">
         <article class="producto" data-nombre="Camisa Tropical" data-precio="1500">
-          <img src="imagenes/camisatropical.jfif" alt="Camisa Tropical" />
+          <img src="/imagenes/camisatropical.jfif" alt="Camisa Tropical" />
           <h3>Camisa Tropical</h3>
           <p class="precio">$1500</p>
           <button class="btn-comprar">Comprar</button>
         </article>
 
         <article class="producto" data-nombre="Short Playero" data-precio="1200">
-          <img src="imagenes/short playero.webp" alt="Short Playero" />
+          <img src="/imagenes/short playero.webp" alt="Short Playero" />
           <h3>Short Playero</h3>
           <p class="precio">$1200</p>
           <button class="btn-comprar">Comprar</button>
@@ -62,21 +62,21 @@
         </article>
 
         <article class="producto" data-nombre="Gafas de Sol Tropic" data-precio="800">
-          <img src="imagenes/Flow br.jfif" alt="Gafas de Sol" />
+          <img src="/imagenes/Flow br.jfif" alt="Gafas de Sol" />
           <h3>Gafas de Sol Tropic</h3>
           <p class="precio">$800</p>
           <button class="btn-comprar">Comprar</button>
         </article>
 
         <article class="producto" data-nombre="Sandalias Beach" data-precio="1100">
-          <img src="imagenes/sandaliasbr.jfif" alt="Sandalias Beach" />
+          <img src="/imagenes/sandaliasbr.jfif" alt="Sandalias Beach" />
           <h3>Sandalias Beach</h3>
           <p class="precio">$1100</p>
           <button class="btn-comprar">Comprar</button>
         </article>
 
         <article class="producto" data-nombre="Bolso Playero" data-precio="2000">
-          <img src="imagenes/tralalelo.jfif" alt="Bolso Playero" />
+          <img src="/imagenes/tralalelo.jfif" alt="Bolso Playero" />
           <h3>Bolso Playero</h3>
           <p class="precio">$2000</p>
           <button class="btn-comprar">Comprar</button>
@@ -90,7 +90,7 @@
       <div class="productos">
         <article class="producto oferta" data-nombre="Camisa Tropical (Oferta)" data-precio="1100">
           <span class="badge">-30%</span>
-          <img src="imagenes/camisatropical.jfif" alt="Camisa Oferta" />
+          <img src="/imagenes/camisatropical.jfif" alt="Camisa Oferta" />
           <h3>Camisa Tropical</h3>
           <p class="precio-original">$1600</p>
           <p class="precio">$1100</p>
@@ -99,7 +99,7 @@
 
         <article class="producto oferta" data-nombre="Short Playero (2x1)" data-precio="1200">
           <span class="badge">2x1</span>
-          <img src="imagenes/short playero.webp" alt="Short 2x1" />
+          <img src="/imagenes/short playero.webp" alt="Short 2x1" />
           <h3>Short Playero</h3>
           <p class="precio-original">$2400</p>
           <p class="precio">$1200</p>
@@ -117,7 +117,7 @@
 
         <article class="producto oferta" data-nombre="Sombrero (Oferta)" data-precio="700">
           <span class="badge">-22%</span>
-          <img src="imagenes/Sombrero parana.jpg" alt="Sombrero Oferta" />
+          <img src="/imagenes/Sombrero parana.jpg" alt="Sombrero Oferta" />
           <h3>Sombrero Panamá</h3>
           <p class="precio-original">$900</p>
           <p class="precio">$700</p>
@@ -158,29 +158,50 @@
     const cerrarCarritoBtn = document.getElementById('cerrar-carrito');
     const cantidadCarritoSpan = document.getElementById('cantidad-carrito');
 
-    let carrito = [];
+    // Usa localStorage para persistir el carrito
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function guardarCarrito() {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    function eliminarProducto(nombre) {
+      carrito = carrito.filter(producto => producto.nombre !== nombre);
+      actualizarCarrito();
+    }
 
     function actualizarCarrito() {
       listaCarrito.innerHTML = '';
       let total = 0;
       let cantidadTotal = 0;
 
-      carrito.forEach(producto => {
-        const li = document.createElement('li');
-        li.textContent = `${producto.nombre} - $${producto.precio} x ${producto.cantidad}`;
-        listaCarrito.appendChild(li);
-        total += producto.precio * producto.cantidad;
-        cantidadTotal += producto.cantidad;
-      });
-
       if (carrito.length === 0) {
         listaCarrito.innerHTML = '<li>El carrito está vacío</li>';
         totalSpan.textContent = '0';
         cantidadCarritoSpan.textContent = '0';
       } else {
+        carrito.forEach(producto => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            ${producto.nombre} - $${producto.precio} x ${producto.cantidad}
+            <button class="eliminar-producto" aria-label="Eliminar ${producto.nombre}" data-nombre="${producto.nombre}" style="margin-left:10px;cursor:pointer;">🗑️</button>
+          `;
+          listaCarrito.appendChild(li);
+          total += producto.precio * producto.cantidad;
+          cantidadTotal += producto.cantidad;
+        });
         totalSpan.textContent = total;
         cantidadCarritoSpan.textContent = cantidadTotal;
       }
+      guardarCarrito();
+
+      // Botones para eliminar productos
+      document.querySelectorAll('.eliminar-producto').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const nombre = e.target.getAttribute('data-nombre');
+          eliminarProducto(nombre);
+        });
+      });
     }
 
     botonesComprar.forEach(boton => {
@@ -198,18 +219,21 @@
         actualizarCarrito();
       });
     });
+
     vaciarCarritoBtn.addEventListener('click', () => {
       carrito = [];
       actualizarCarrito();
     });
+
     btnCarrito.addEventListener('click', () => {
       carritoAside.classList.remove('carrito-oculto');
     });
+
     cerrarCarritoBtn.addEventListener('click', () => {
       carritoAside.classList.add('carrito-oculto');
     });
+
     actualizarCarrito();
   </script>
 </body>
 </html>
-
